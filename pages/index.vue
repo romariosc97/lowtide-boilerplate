@@ -28,7 +28,33 @@
 </template>
 
 <script>
-export default {}
+export default {
+  computed: {
+
+  },
+
+  data() {
+    return {
+      
+    }
+  },
+  methods: {
+    async getConfiguration() {
+      try {
+          const sessionAxios = this.$axios.create({
+              withCredentials: true
+          });
+          const response = await sessionAxios.get('http://localhost:3000/api/users');
+          console.log(response);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  },
+  mounted: function () {
+    this.getConfiguration();
+  },
+}
 </script>
 
 <style>
