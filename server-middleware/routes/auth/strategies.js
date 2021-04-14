@@ -42,7 +42,6 @@ const handleError = (res, error, code) => {
 /* Username & Password Login */
 
 exports.credentialLogin = (req, res) => {
-  console.log(req.body);
   const { username, password } = req.body
   const conn = new jsforce.Connection()
 
