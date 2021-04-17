@@ -23,6 +23,12 @@
 
                     Highlighted: "text-white bg-indigo-600", Not Highlighted: "text-gray-900"
                 -->
+                <li @click="changeSelected('Einstein Discovery Data')" class="cursor-pointer hover:text-white hover:bg-blue-600 text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9" id="listbox-option-0" role="option">
+                    <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
+                    <span :class="(selected==='Einstein Discovery Data' ? 'font-bold ' : 'font-normal ') + 'block truncate'">
+                        Einstein Discovery Data
+                    </span>
+                </li>
                 <li @click="changeSelected('Deploy')" class="cursor-pointer hover:text-white hover:bg-blue-600 text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9" id="listbox-option-0" role="option">
                     <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
                     <span :class="(selected==='Deploy' ? 'font-bold ' : 'font-normal ') + 'block truncate'">
@@ -33,12 +39,6 @@
                     <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
                     <span :class="(selected==='Timeshift' ? 'font-bold ' : 'font-normal ') + 'block truncate'">
                         Timeshift
-                    </span>
-                </li>
-                <li @click="changeSelected('Another action')" class="cursor-pointer hover:text-white hover:bg-blue-600 text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9" id="listbox-option-0" role="option">
-                    <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
-                    <span :class="(selected==='Another action' ? 'font-bold ' : 'font-normal ') + 'block truncate'">
-                        Another action
                     </span>
                 </li>
 
@@ -88,7 +88,7 @@ export default {
 <style>
     .select-menu{
         transition: opacity 0.3s;
-        z-index: 1;
+        z-index: 11;
     }
     .select-menu-transition{
         opacity: 0;
