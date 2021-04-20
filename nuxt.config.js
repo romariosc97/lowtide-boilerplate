@@ -6,7 +6,7 @@ export default {
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'lowtide-boilerplate',
+    title: 'Lowtide',
     htmlAttrs: {
       lang: 'en'
     },
@@ -46,5 +46,14 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'index',
+        path: '/',
+        component: resolve(__dirname, 'pages/login.vue')
+      })
+    }
+  }
 
 }

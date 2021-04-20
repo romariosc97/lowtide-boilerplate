@@ -13,7 +13,7 @@
                                     <div class="flex items-center space-x-3">
                                         <div class="flex-shrink-0 h-12 w-12 relative">
                                             <img @mouseenter="imgProfileHover=true" :class="(imgProfileHover ? '-z-index opacity-0 ' : '') + 'img-profile h-12 w-12 rounded-full'" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixqx=Tt6LMluVtn&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80" alt="">
-                                            <div @mouseleave="imgProfileHover=false" :class="(imgProfileHover ? 'cursor-pointer ' : '-z-index ') + 'flex justify-center items-center h-12 w-12 absolute top-0 left-0 rounded-full bg-blue-200 text-white'">
+                                            <div @mouseleave="imgProfileHover=false" :class="(imgProfileHover ? 'cursor-pointer ' : '-z-index ') + 'flex justify-center items-center h-12 w-12 absolute top-0 left-0 rounded-full bg-blue-500 text-white'">
                                                 <svg @click="logout()" xmlns="http://www.w3.org/2000/svg" :class="'logout h-6 w-6'" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                                                 </svg>
@@ -37,7 +37,7 @@
                                 </div>
                                 <!-- Step by step -->
                                 <div>
-                                    <Steps v-if="this.action!=='Welcome!'" />
+                                    <Steps v-bind:steps="this.steps" v-show="this.action!=='Welcome!'" />
                                 </div>
                             </div>
                         </div>
@@ -100,13 +100,21 @@ export default {
     data() {
         return {
             notifications: [
-                {title: 'Timeshift', time: '13:05:12', message: 'Your job has finished successfully.'},
-                {title: 'Deploy', time: '13:21:51', message: 'Your job has finished successfully.'}
+                {title: 'Timeshift', time: '13:05:12', message: 'Your job has finished successfully.', type: 'success'},
+                {title: 'Deploy', time: '13:21:51', message: 'Your job has started.', type: 'info'},
+                {title: 'Deploy', time: '13:26:44', message: 'Your job has finished but an error has occurred.', type: 'error'}
             ],
             options: [
                 {title: 'Einstein Discovery Data'},
                 {title: 'Deploy'},
                 {title: 'Timeshift'}
+            ],
+            steps: [
+                {title: 'Select dataset parameters', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'current'},
+                {title: 'Define columns', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'upcoming'},
+                {title: 'Set relations', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'upcoming'},
+                {title: 'Generate data', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'upcoming'}
+                
             ],
             imgProfileHover: false
         }
@@ -124,12 +132,42 @@ export default {
     mounted() {
 
     },
+    watch: {
+        action: function () {
+            switch (this.action) {
+                case 'Einstein Discovery Data':
+                    this.steps = [
+                        {title: 'Select dataset parameters', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'current'},
+                        {title: 'Define columns', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'upcoming'},
+                        {title: 'Set relations', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'upcoming'},
+                        {title: 'Generate data', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'upcoming'}
+                        
+                    ];
+                    break;
+                case 'Deploy':
+                    this.steps = [
+                        {title: 'Select templates', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'current'},
+                        {title: 'Deploying', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'upcoming'},
+                        {title: 'Results', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'upcoming'}
+                        
+                    ];
+                    break;
+                case 'Timeshift':
+                    this.steps = [
+                        {title: 'Select datasets', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'current'},
+                        {title: 'Timeshifting', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'upcoming'},
+                        {title: 'Results', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', type: 'upcoming'}
+                    ];
+                    break;
+            }
+        }
+    },
 }
 </script>
 
 <style>
     .img-profile{
-        transition: opacity 0.3s;
+        transition: opacity 0.4s;
     }
     .img-profile:hover{
         z-index: -1;

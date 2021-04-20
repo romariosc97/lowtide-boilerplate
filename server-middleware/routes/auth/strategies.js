@@ -34,6 +34,11 @@ const handleSuccess = async (req, res, connection) => {
   })
 }
 
+const handleSuccessOauth = async (req, res, connection) => {
+  req.session.salesforce = await salesforceInfo(connection)
+  res.redirect(process.env.BASE_URL+'/dashboard')
+}
+
 const handleError = (res, error, code) => {
   console.error(error.message)
   return res.status(code || 500).json({ error: error.message })
@@ -77,7 +82,7 @@ exports.handleOauthCallback = async (req, res) => {
   const conn = new jsforce.Connection({ oauth2: oauth2 })
   conn.authorize(req.query.code)
     //.then(_ => handleSuccess(req, res, conn))
-    .then(_ => res.redirect(process.env.BASE_URL+'/dashboard'))
+    .then(_ => handleSuccessOauth(req, res, conn))
     .catch(error => handleError(res, error, 403))
 
 }

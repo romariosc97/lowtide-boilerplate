@@ -29,15 +29,18 @@
                     </div>
 
                     <div>
-                        <button :disabled="btnLoading" type="submit" :class="(btnLoading ? 'cursor-not-allowed ' : '') + 'disabled:opacity-50 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'">
-                            <div v-if="btnLoading" class="loader animate-spin"></div>
+                        <button :disabled="btnCredentialsLoading" type="submit" :class="(btnCredentialsLoading ? 'cursor-not-allowed ' : '') + 'disabled:opacity-50 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'">
+                            <div v-if="btnCredentialsLoading" class="loader animate-spin"></div>
                             <span v-else>
                                 Login with credentials
                             </span>
                         </button>
-                        <a href="http://localhost:3000/api/auth/oauth" type="submit" :class="(btnLoading ? 'cursor-not-allowed ' : '') + 'disabled:opacity-50 mt-4 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'">
-                            Login with Salesforce
-                        </a>
+                        <button @click="loginSalesforce()" :disabled="btnOauthLoading" type="button" :class="(btnOauthLoading ? 'cursor-not-allowed ' : '') + 'mt-4 disabled:opacity-50 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'">
+                            <div v-if="btnOauthLoading" class="loader animate-spin"></div>
+                            <span v-else>
+                                Login with Salesforce
+                            </span>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -56,22 +59,27 @@ export default {
         return {
             username: '',
             password: '',
-            btnLoading: false
+            btnCredentialsLoading: false,
+            btnOauthLoading: false,
         }
     },
     methods: {
         async login() {
-            this.btnLoading = true;
+            this.btnCredentialsLoading = true;
             try {
                 await this.$axios.post('http://localhost:3000/api/auth/login', {
                     username: this.username,
                     password: this.password
                 }, {withCredentials: true});
-                this.btnLoading = false;                
+                this.btnCredentialsLoading = false;                
                 this.$router.push('/dashboard');
             } catch (error) {
                 console.error(error);   
             }
+        },
+        async loginSalesforce() {
+            this.btnOauthLoading = true;
+            window.location.href = "http://localhost:3000/api/auth/oauth";
         }
     },
     mounted: function () {
