@@ -32,9 +32,12 @@
                         <button :disabled="btnLoading" type="submit" :class="(btnLoading ? 'cursor-not-allowed ' : '') + 'disabled:opacity-50 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'">
                             <div v-if="btnLoading" class="loader animate-spin"></div>
                             <span v-else>
-                                Login with Salesforce
+                                Login with credentials
                             </span>
                         </button>
+                        <a href="http://localhost:3000/api/auth/oauth" type="submit" :class="(btnLoading ? 'cursor-not-allowed ' : '') + 'disabled:opacity-50 mt-4 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'">
+                            Login with Salesforce
+                        </a>
                     </div>
                 </form>
             </div>

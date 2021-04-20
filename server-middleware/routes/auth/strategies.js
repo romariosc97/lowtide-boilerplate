@@ -75,9 +75,9 @@ exports.oauthRedirect = (req, res) => {
 exports.handleOauthCallback = async (req, res) => {
 
   const conn = new jsforce.Connection({ oauth2: oauth2 })
-
   conn.authorize(req.query.code)
-    .then(_ => handleSuccess(req, res, conn))
+    //.then(_ => handleSuccess(req, res, conn))
+    .then(_ => res.redirect(process.env.BASE_URL+'/dashboard'))
     .catch(error => handleError(res, error, 403))
 
 }

@@ -16,8 +16,8 @@
                         </span>
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
-                        <span class="text-xs font-semibold tracking-wide uppercase">Select dataset parameters</span>
-                        <span class="text-sm text-gray-500">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                        <span class="text-sm font-semibold tracking-wide">Select dataset parameters</span>
+                        <span class="text-sm text-gray-500 mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
                     </span>
                 </a>
             </li>
@@ -32,8 +32,8 @@
                         </span>
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
-                        <span class="text-xs font-semibold tracking-wide uppercase text-blue-600">Define columns</span>
-                        <span class="text-sm text-gray-500">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                        <span class="text-sm font-semibold tracking-wide text-blue-600">Define columns</span>
+                        <span class="text-sm text-gray-500 mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
                     </span>
                 </a>
             </li>
@@ -48,8 +48,8 @@
                         </span>
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
-                        <span class="text-xs font-semibold tracking-wide uppercase text-gray-500">Set Relations</span>
-                        <span class="text-sm text-gray-500">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                        <span class="text-sm font-semibold tracking-wide text-gray-500">Set Relations</span>
+                        <span class="text-sm text-gray-500 mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
                     </span>
                 </a>
             </li>
@@ -63,8 +63,8 @@
                         </span>
                     </span>
                     <span class="ml-4 min-w-0 flex flex-col">
-                        <span class="text-xs font-semibold tracking-wide uppercase text-gray-500">Generate data</span>
-                        <span class="text-sm text-gray-500">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                        <span class="text-sm font-semibold tracking-wide text-gray-500">Generate data</span>
+                        <span class="text-sm text-gray-500 mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
                     </span>
                 </a>
             </li>
