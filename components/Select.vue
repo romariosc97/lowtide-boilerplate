@@ -34,6 +34,9 @@ export default {
         },
         mutation: {
             type: String
+        },
+        label: {
+            type: String
         }
     },
     computed: {
@@ -43,7 +46,7 @@ export default {
     data() {
         return {
             open: false,
-            selected: 'Select an action'
+            selected: this.label
         }
     },
     methods: {
