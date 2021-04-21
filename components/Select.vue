@@ -31,6 +31,9 @@ export default {
     props: {
         options: {
             type: Array
+        },
+        mutation: {
+            type: String
         }
     },
     computed: {
@@ -55,7 +58,7 @@ export default {
         changeSelected(action) {
             this.selected = action;
             this.open = false;
-            this.$store.commit('setAction', {action: action});
+            this.$store.commit(`${this.mutation}` , {action: action});
         },
     },
     created() {

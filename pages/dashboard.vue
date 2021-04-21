@@ -25,7 +25,7 @@
                                         </div>
                                     </div>
                                     <div class="flex flex-col sm:flex-row xl:flex-col">
-                                        <Select v-bind:options="this.options" />
+                                        <Select v-bind:options="this.options" v-bind:mutation="'setAction'" />
                                     </div>
                                 </div>
                                 <div>
