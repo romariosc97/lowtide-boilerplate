@@ -31,15 +31,21 @@
                     <div>
                         <button :disabled="btnCredentialsLoading" type="submit" :class="(btnCredentialsLoading ? 'cursor-not-allowed ' : '') + 'disabled:opacity-50 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'">
                             <div v-if="btnCredentialsLoading" class="loader animate-spin"></div>
-                            <span v-else>
-                                Login with credentials
+                            <span class="flex justify-center flex-row flex-grow" v-else>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                                </svg>
+                                <span class="flex-grow">Login with credentials</span>
                             </span>
                         </button>
-                        <button @click="loginSalesforce()" :disabled="btnOauthLoading" type="button" :class="(btnOauthLoading ? 'cursor-not-allowed ' : '') + 'mt-4 disabled:opacity-50 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'">
+                    </div>
+                    <div>
+                        <button @click="loginSalesforce()" :disabled="btnOauthLoading || btnCredentialsLoading" type="button" :class="(btnOauthLoading || btnCredentialsLoading ? 'cursor-not-allowed ' : '') + 'disabled:opacity-50 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'">
                             <div v-if="btnOauthLoading" class="loader animate-spin"></div>
-                            <span v-else>
-                                Login with Salesforce
-                            </span>
+                            <div class="flex justify-center flex-row flex-grow" v-else>
+                                <SalesforceIcon /> 
+                                <span class="flex-grow">Login with Salesforce</span>
+                            </div>
                         </button>
                     </div>
                 </form>
@@ -89,11 +95,5 @@ export default {
 </script>
 
 <style>
-    .loader {
-        border: 3.5px solid #f3f3f3;
-        border-top: 3.5px solid #3b82f6;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-    }
+
 </style>

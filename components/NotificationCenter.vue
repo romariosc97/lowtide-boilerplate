@@ -25,7 +25,6 @@
                         </div>
                     </div>
                 </li>
-                <!-- More items... -->
             </ul>
             <div class="py-4 text-sm border-t border-gray-200">
                 <a href="#" class="text-blue-600 font-semibold hover:text-blue-900">View all activity <span aria-hidden="true">&rarr;</span></a>
